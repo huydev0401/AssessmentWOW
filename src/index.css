@@ -1,0 +1,24 @@
+/* @tailwind base; */
+@tailwind components;
+@tailwind utilities;
+#body-view .ant-table-content {
+  overflow: auto;
+}
+
+.ant-collapse .ant-collapse-content > .ant-collapse-content-box,
+.ant-collapse-ghost
+  > .ant-collapse-item
+  > .ant-collapse-content
+  > .ant-collapse-content-box {
+  padding-block: 0;
+  padding: 0;
+}
+.ant-collapse
+  > .ant-collapse-item.ant-collapse-no-arrow
+  > .ant-collapse-header {
+  display: none;
+}
+.editable-cell-value-wrap {
+  padding: 5px 12px;
+  cursor: pointer;
+}
