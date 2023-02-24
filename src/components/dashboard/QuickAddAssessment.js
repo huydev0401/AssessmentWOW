@@ -75,7 +75,7 @@ function QuickAddAssessment(props) {
       });
       setAssessmentType(types);
     }
-    setAssessmentState(inviteFormat({ ...allValues, types }));
+    setAssessmentState(inviteFormat({ ...allValues, types, user }));
   };
   const handleFinish = async (values) => {
     setLoading(true);
