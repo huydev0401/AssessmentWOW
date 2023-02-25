@@ -84,7 +84,7 @@ export const inviteFormat = ({ firstname, lastname, types, gender, user }) => {
     -	<b>EiQ</b> (Thông minh Cảm Xúc)
     </p>
     <p>
-    -	<b>Learning Style</b> (Phong cách học tập, nâng cao chất lượng Giản dạy trong ngành Giáo dục)
+    -	<b>Learning Style</b> (Phong cách học tập, nâng cao chất lượng Giảng dạy trong ngành Giáo dục)
     </p>
     <p>
     -	<b>DISC KIDs</b> (Phát triển THIÊN TÀI trong mỗi đứa TRẺ)
