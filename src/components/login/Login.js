@@ -14,12 +14,12 @@ import { Link } from "react-router-dom";
 const schema = yup.object({
   email: yup
     .string()
-    .email("Please enter valid email address")
-    .required("Please enter your email address"),
+    .email("Vui lòng nhập địa chỉ email hợp lệ")
+    .required("Vui lòng nhập địa chỉ email"),
   password: yup
     .string()
-    .required("Please enter your password")
-    .min(6, "Your password must be at least 6 characters or greater"),
+    .required("Vui lòng nhập mật khẩu")
+    .min(6, "Mật khẩu tối thiểu 6 ký tự"),
 });
 
 function Login(props) {
@@ -46,9 +46,9 @@ function Login(props) {
     if (!isValid) return;
     try {
       await login("emailPassword", values.email.toLowerCase(), values.password);
-      toast.success("Login success");
+      toast.success("Đăng nhập thành công");
     } catch (error) {
-      toast.error("Your account does not exist! Please try again");
+      toast.error("Tài khoản của bạn không tồn tại! Vui lòng thử lại");
     }
   };
   return (
@@ -60,11 +60,11 @@ function Login(props) {
           autoComplete="off"
         >
           <div className="mb-[20px] md:mb-[40px]">
-            <h2 className="text-center md:text-left text-[38px] font-semibold text-[#2E2E2E]">
-              Welcome back
+            <h2 className="text-center md:text-left text-[34px] font-semibold text-[#2E2E2E]">
+              Assessment 24x7 Xin Chào!
             </h2>
             <p className="md:text-left text-center text-[16px] text-[#979797]">
-              Welcome back! Please enter your details.
+              Vui lòng nhập thông tin đăng nhập của bạn.
             </p>
           </div>
           <Field>
@@ -72,7 +72,7 @@ function Login(props) {
             <Input
               type="text"
               name="email"
-              placeholder="Enter your email"
+              placeholder="Nhập địa chỉ email"
               control={control}
               disabled={isSubmitting}
             ></Input>
@@ -85,7 +85,7 @@ function Login(props) {
             ></InputPasswordToggle>
           </Field>
           <div className="text-right">
-            <Link to="/reset">Forgot your password?</Link>
+            <Link to="/reset">Quên mật khẩu?</Link>
           </div>
           <Button
             type="submit"
@@ -93,7 +93,7 @@ function Login(props) {
             isLoading={isSubmitting}
             disabled={isSubmitting}
           >
-            Sign Up
+            Đăng Nhập
           </Button>
         </form>
       </div>

@@ -10,7 +10,7 @@ const InputPasswordToggle = ({ control }) => {
       <Input
         type={togglePassword ? "text" : "password"}
         name="password"
-        placeholder="Enter your password"
+        placeholder="Nhập mật khẩu"
         control={control}
       >
         {!togglePassword ? (

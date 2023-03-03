@@ -124,23 +124,25 @@ export default function ResetPassword() {
             <img src="/images/lock-icon.png" alt="" />
           </div>
           <h2 className="text-[#1677ff] font-bold text-[24px] md:text-[32px] mb-0 capitalize">
-            Forgot your password?
+            Quên mật khẩu?
           </h2>
-          <p className="text-[14px] mb-[20px]">Let's get you new one!</p>
+          <p className="text-[14px] mb-[20px]">
+            Nhập email của bạn để reset mật khẩu
+          </p>
           <Form.Item
             name="email"
             rules={[
               {
                 type: "email",
-                message: "The input is not valid E-mail!",
+                message: "Vui lòng nhập địa chỉ email hợp lệ!",
               },
               {
                 required: true,
-                message: "Please input your E-mail!",
+                message: "Vui lòng nhập địa chỉ email!",
               },
             ]}
           >
-            <Input size="large" placeholder="Enter your email" />
+            <Input size="large" placeholder="Nhập email của bạn" />
           </Form.Item>
 
           <Form.Item>
@@ -154,7 +156,7 @@ export default function ResetPassword() {
             </Button>
           </Form.Item>
           <p className="text-[14px]">
-            Didn't request a password reset? You can ignore this message
+            Nếu bạn không có yêu cầu reset password? Bạn có thể bỏ qua bước này
           </p>
           <Link to="/">Go Back</Link>
         </Form>
