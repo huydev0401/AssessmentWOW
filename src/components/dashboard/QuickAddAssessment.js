@@ -295,7 +295,7 @@ function QuickAddAssessment(props) {
                             } Credit`}
                           >
                             <small className="text-red-600">
-                              ({currentUser.creditRate?.["EIQ 2"] || 1} Credit)
+                              (-{currentUser.creditRate?.["EIQ 2"] || 1} Credit)
                             </small>
                           </Tooltip>
                         </Checkbox>
@@ -322,6 +322,9 @@ function QuickAddAssessment(props) {
                       </Col>
                       <Col span={12}>
                         <Checkbox
+                          disabled={
+                            !currentUser.creditRate?.["Kids DISC"] || false
+                          }
                           value="Kids DISC"
                           style={{ lineHeight: "32px" }}
                         >
