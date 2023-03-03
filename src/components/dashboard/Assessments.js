@@ -27,10 +27,12 @@ import {
   filterAssessments,
   searchAssessments,
   selectAssessments,
+  typeAssessments,
   selectFilter,
   selectFilterAssessments,
   selectSearch,
   selectStatus,
+  selectType,
   statusAssessments,
 } from "../../redux/assessmentsSlice";
 import "moment/locale/vi";
@@ -48,6 +50,8 @@ function Assessments(props) {
   const search = useSelector(selectSearch);
   const selectTag = useSelector(selectFilter);
   const filStatus = useSelector(selectStatus);
+  const filType = useSelector(selectType);
+
   const [tags, settags] = useState([]);
   const dispatch = useDispatch();
   useEffect(() => {
@@ -89,6 +93,9 @@ function Assessments(props) {
   const handleStatus = value => {
     dispatch(statusAssessments(value));
   };
+  const handleType = value => {
+    dispatch(typeAssessments(value));
+  };
   const handleSelectTag = tag => {
     dispatch(filterAssessments([...selectTag, tag]));
   };
@@ -107,6 +114,44 @@ function Assessments(props) {
         placeholder='Nhập từ khoá tìm kiếm'
         onChange={handleSearch}
         enterButton
+      />
+
+      <Select
+        allowClear
+        value={filType}
+        placeholder='Lọc theo Bài test'
+        style={{
+          width: 200,
+          marginRight: 15,
+          marginBottom: 20,
+        }}
+        onChange={handleType}
+        options={[
+          {
+            value: "DISC",
+            label: "DISC",
+          },
+          {
+            value: "Motivators",
+            label: "Motivators",
+          },
+          {
+            value: "Sale IQ Plus",
+            label: "Sale IQ Plus",
+          },
+          {
+            value: "EIQ 2",
+            label: "EIQ 2",
+          },
+          {
+            value: "Learning Styles",
+            label: "Learning Styles",
+          },
+          {
+            value: "Kids DISC",
+            label: "Kids DISC",
+          },
+        ]}
       />
       <Select
         allowClear
@@ -229,6 +274,11 @@ function Assessments(props) {
                 case "Learning Styles": {
                   avatar =
                     "https://actioncoachassessments.com/UploadArea/269/badge2.jpg";
+                  break;
+                }
+                case "Kids DISC": {
+                  avatar =
+                    "https://www.assessments24x7.com/_nuxt/img/disc-kids-icon.b89fcd1.png";
                   break;
                 }
               }

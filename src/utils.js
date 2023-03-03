@@ -26,7 +26,6 @@ export const removeEmptyObject = (obj) =>
 export const inviteFormat = ({ firstname, lastname, types, gender, user }) => {
   var links = "";
   var userEmail = user.customData.email;
-  console.log(userEmail);
   if (!firstname || !lastname || !types || types.length <= 0) {
     return "";
   }
@@ -40,10 +39,7 @@ export const inviteFormat = ({ firstname, lastname, types, gender, user }) => {
       </li>
       `;
   });
-  if (
-    userEmail == "ethannguyen@actioncoachcbd.com" ||
-    userEmail == "theo@a247.vn"
-  ) {
+  if (userEmail === "theo@a247.vn") {
     return `
     <p>
       <b>${gender ? gender : "Anh/Chị"} ${firstname} ${lastname}</b>
@@ -119,6 +115,9 @@ export const inviteFormat = ({ firstname, lastname, types, gender, user }) => {
     <ul>
       ${links}
     </ul>
+    <strong style="color: red;">
+    Lưu ý: Bài đánh giá có giá trị trong vòng 30 ngày
+    </strong>
   `;
 };
 
@@ -169,7 +168,7 @@ function toSlug(str) {
   // return
   return str;
 }
-export const search = (items, text, filter, dateRange, status) => {
+export const search = (items, text, filter, dateRange, status, type) => {
   text = text.split(" ");
   return items.filter((item) => {
     let hasTag = false;
@@ -179,6 +178,7 @@ export const search = (items, text, filter, dateRange, status) => {
       ? true
       : false;
     let isStatus = !status ? true : status === item.status ? true : false;
+    let isType = !type ? true : type === item.type ? true : false;
 
     if (filter && filter.length > 0) {
       for (let i = 0; i < filter.length; i++) {
@@ -191,6 +191,7 @@ export const search = (items, text, filter, dateRange, status) => {
       hasTag = true;
     }
     return (
+      isType &&
       isStatus &&
       isRange &&
       hasTag &&
@@ -201,4 +202,9 @@ export const search = (items, text, filter, dateRange, status) => {
       })
     );
   });
+};
+export const validateEmail = (email) => {
+  return email.match(
+    /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+  );
 };

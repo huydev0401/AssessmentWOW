@@ -19,6 +19,7 @@ const assessmentsSlice = createSlice({
     filter: [],
     dateRange: [],
     statusfilter: null,
+    typefilter: null,
   }),
   reducers: {
     searchAssessments: (state, action) => {
@@ -32,6 +33,9 @@ const assessmentsSlice = createSlice({
     },
     statusAssessments: (state, action) => {
       state.statusfilter = action.payload;
+    },
+    typeAssessments: (state, action) => {
+      state.typefilter = action.payload;
     },
     updateUser: (state, action) => {
       state.user = action.payload;
@@ -91,6 +95,7 @@ export const {
   filterAssessments,
   searchAssessments,
   statusAssessments,
+  typeAssessments,
   deleteOneAssessment,
   updateOneAssessment,
   updateUser,
@@ -234,6 +239,7 @@ export const selectSearch = state => state.assessments.search;
 export const selectFilter = state => state.assessments.filter;
 export const selectDateRange = state => state.assessments.dateRange;
 export const selectStatus = state => state.assessments.statusfilter;
+export const selectType = state => state.assessments.typefilter;
 export const selectAssessments = state => assessmentsSelectors.selectAll(state);
 export const selectFilterAssessments = state =>
   search(
@@ -241,7 +247,8 @@ export const selectFilterAssessments = state =>
     selectSearch(state),
     selectFilter(state),
     selectDateRange(state),
-    selectStatus(state)
+    selectStatus(state),
+    selectType(state)
   );
 export const selectUser = state => state.assessments.user;
 export const selectTopNewAssessments = state =>

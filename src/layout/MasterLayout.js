@@ -191,7 +191,7 @@ function MasterLayout(props) {
             background: "#222",
             color: "white",
           }}>
-          © 2022 WoW Multimedia. version 1.0.2 beta
+          © 2022 <a href='https://www.ezapps.vn'></a>EZ Apps. version 1.0.3
         </p>
       </Spin>
     );
