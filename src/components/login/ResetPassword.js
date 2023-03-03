@@ -18,10 +18,10 @@ export default function ResetPassword() {
       await app.emailPasswordAuth.sendResetPasswordEmail({
         email: values.email,
       });
-      message.success("Please Check Your Email!");
+      message.success("Vui lòng kiểm tra email của bạn!");
       setIsLoading(false);
     } catch (error) {
-      message.error("Your Account Does Not Exist! Please Try Again");
+      message.error("Tài khoản của bạn không tồn tại! Vui lòng thử lại sau");
       setIsLoading(false);
     }
   };
@@ -34,11 +34,11 @@ export default function ResetPassword() {
         token,
         tokenId,
       });
-      message.success("Change Password Successfully");
+      message.success("Đổi mật khẩu thành công");
       setIsLoading(false);
       navigate("/");
     } catch (error) {
-      message.error("An Error Occurred, Please Try Again");
+      message.error("Đã có lỗi xảy ra, Vui lòng thử lại");
       setIsLoading(false);
     }
   };
@@ -56,14 +56,14 @@ export default function ResetPassword() {
             <img src="/images/lock-icon.png" alt="" />
           </div>
           <h2 className="text-[#1677ff] font-bold text-[24px] md:text-[32px] mb-[15px] capitalize">
-            Create new password
+            Tạo mật khẩu mới
           </h2>
           <Form.Item
             name="password"
             rules={[
               {
                 required: true,
-                message: "Please input your password!",
+                message: "Vui lòng nhập mật khẩu!",
               },
             ]}
             hasFeedback
@@ -78,7 +78,7 @@ export default function ResetPassword() {
             rules={[
               {
                 required: true,
-                message: "Please confirm your password!",
+                message: "Vui lòng xác nhận mật khẩu của bạn!",
               },
               ({ getFieldValue }) => ({
                 validator(_, value) {
@@ -86,9 +86,7 @@ export default function ResetPassword() {
                     return Promise.resolve();
                   }
                   return Promise.reject(
-                    new Error(
-                      "The two passwords that you entered do not match!"
-                    )
+                    new Error("Xác nhận mật khẩu không chính xác!")
                   );
                 },
               }),
